@@ -43,6 +43,18 @@ app.get('/add',(req,res)=>{
 res.render('add');
 
 });
+app.get('/details/:id',(req,res)=>{
+
+const item =
+clothes.find(
+x => x.id == req.params.id
+);
+
+res.render('details',{
+item
+});
+
+});
 
 app.post('/add',(req,res)=>{
 
