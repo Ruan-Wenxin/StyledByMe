@@ -38,6 +38,38 @@ clothes
 
 });
 
+app.get('/add',(req,res)=>{
+
+res.render('add');
+
+});
+
+app.post('/add',(req,res)=>{
+
+const newItem = {
+
+id: Date.now(),
+
+imageUrl:req.body.imageUrl,
+
+name:req.body.name,
+
+category:req.body.category,
+
+color:req.body.color,
+
+style:req.body.style
+
+};
+
+clothes.push(newItem);
+
+res.render('submit',{
+item:newItem
+});
+
+});
+
 app.listen(port, () => {
     console.log(`StyledByMe running at http://localhost:${port}`);
 });
