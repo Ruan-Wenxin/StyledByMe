@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Item</title>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<%- include('partials_nav') %>
+
+<div class="container mt-4">
+
+<h1>Edit Item</h1>
+
+<form
+action="/edit/<%= item.id %>"
+method="POST"
+>
+
+<label class="form-label mt-3">
+Image URL
+</label>
+
+<input
+type="text"
+name="imageUrl"
+class="form-control"
+value="<%= item.imageUrl %>"
+required
+>
+
+<label class="form-label mt-3">
+Name
+</label>
+
+<input
+type="text"
+name="name"
+class="form-control"
+value="<%= item.name %>"
+required
+>
+
+<label class="form-label mt-3">
+Category
+</label>
+
+<input
+type="text"
+name="category"
+class="form-control"
+value="<%= item.category %>"
+required
+>
+
+<label class="form-label mt-3">
+Color
+</label>
+
+<input
+type="text"
+name="color"
+class="form-control"
+value="<%= item.color %>"
+required
+>
+
+<label class="form-label mt-3">
+Style
+</label>
+
+<input
+type="text"
+name="style"
+class="form-control"
+value="<%= item.style %>"
+required
+>
+
+<label class="form-label mt-3">
+Brand
+</label>
+
+<input
+type="text"
+name="brand"
+class="form-control"
+value="<%= item.brand %>"
+required
+>
+
+<label class="form-label mt-3">
+Season
+</label>
+
+<input
+type="text"
+name="season"
+class="form-control"
+value="<%= item.season %>"
+required
+>
+
+<label class="form-label mt-3">
+Occasion
+</label>
+
+<input
+type="text"
+name="occasion"
+class="form-control"
+value="<%= item.occasion %>"
+required
+>
+
+<button
+type="submit"
+class="btn btn-dark mt-4"
+>
+Update Item
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

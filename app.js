@@ -70,7 +70,13 @@ category:req.body.category,
 
 color:req.body.color,
 
-style:req.body.style
+style:req.body.style,
+
+brand:req.body.brand,
+
+season:req.body.season,
+
+occasion:req.body.occasion
 
 };
 
@@ -81,6 +87,40 @@ item:newItem
 });
 
 });
+
+app.get('/edit/:id',(req,res)=>{
+
+const item =
+clothes.find(
+x => x.id == req.params.id
+);
+
+res.render('edit',{
+item
+});
+
+});
+
+app.post('/edit/:id',(req,res)=>{
+
+const item =
+clothes.find(
+x => x.id == req.params.id
+);
+
+item.imageUrl = req.body.imageUrl;
+item.name = req.body.name;
+item.category = req.body.category;
+item.color = req.body.color;
+item.style = req.body.style;
+item.brand = req.body.brand;
+item.brand = req.body.season;
+item.occasion = req.body.occasion;
+
+res.redirect('/closet');
+
+});
+
 app.listen(port, () => {
     console.log(`StyledByMe running at http://localhost:${port}`);
 });
