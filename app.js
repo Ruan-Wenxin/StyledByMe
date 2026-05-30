@@ -49,7 +49,11 @@ favorite:false
 ];
 
 app.get('/', (req, res) => {
-    res.render('index');
+
+res.render('index',{
+clothes
+});
+
 });
 
 app.get('/closet',(req,res)=>{
@@ -225,6 +229,29 @@ outfitSuggestions
 
 });
 
+app.get('/search',(req,res)=>{
+
+let results = [];
+
+if(req.query.keyword){
+
+results = clothes.filter(item =>
+
+item.name
+.toLowerCase()
+.includes(
+req.query.keyword.toLowerCase()
+)
+
+);
+
+}
+
+res.render('search',{
+results
+});
+
+});
 
 app.listen(port, () => {
     console.log(`StyledByMe running at http://localhost:${port}`);
