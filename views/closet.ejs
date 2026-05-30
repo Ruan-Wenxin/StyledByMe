@@ -76,6 +76,21 @@ class="btn btn-primary btn-sm"
 Edit
 </a>
 
+<a
+href="/delete/<%= item.id %>"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this item?')"
+>
+Delete
+</a>
+
+<a
+href="/favorite/<%= item.id %>"
+class="btn btn-warning btn-sm"
+>
+Favourite
+</a>
+
 </div>
 
 </div>

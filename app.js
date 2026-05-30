@@ -10,19 +10,45 @@ app.use(express.static('public'));
 let clothes = [
 {
 id:1,
+
 imageUrl:"https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+
 name:"White T-Shirt",
+
 category:"Top",
+
 color:"White",
-style:"Casual"
+
+style:"Casual",
+
+brand:"Uniqlo",
+
+season:"Summer",
+
+occasion:"Daily Wear",
+
+favorite:false
 },
 {
 id:2,
+
 imageUrl:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+
 name:"Blue Jeans",
+
 category:"Bottom",
+
 color:"Blue",
-style:"Casual"
+
+style:"Casual",
+
+brand:"Levi's",
+
+season:"All Season",
+
+occasion:"Daily Wear",
+
+favorite:false
 }
 ];
 
@@ -120,6 +146,44 @@ item.occasion = req.body.occasion;
 res.redirect('/closet');
 
 });
+
+app.get('/delete/:id',(req,res)=>{
+
+clothes =
+clothes.filter(
+x => x.id != req.params.id
+);
+
+res.redirect('/closet');
+
+});
+
+app.get('/favorite/:id',(req,res)=>{
+
+const item =
+clothes.find(
+x => x.id == req.params.id
+);
+
+item.favorite = !item.favorite;
+
+res.redirect('/closet');
+
+});
+
+app.get('/outfits',(req,res)=>{
+
+const favorites =
+clothes.filter(
+x => x.favorite
+);
+
+res.render('outfits',{
+favorites
+});
+
+});
+
 
 app.listen(port, () => {
     console.log(`StyledByMe running at http://localhost:${port}`);
