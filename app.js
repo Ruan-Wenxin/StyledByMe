@@ -25,8 +25,6 @@ brand:"Uniqlo",
 
 season:"Summer",
 
-occasion:"Daily Wear",
-
 favorite:false
 },
 {
@@ -45,8 +43,6 @@ style:"Casual",
 brand:"Levi's",
 
 season:"All Season",
-
-occasion:"Daily Wear",
 
 favorite:false
 }
@@ -102,8 +98,6 @@ brand:req.body.brand,
 
 season:req.body.season,
 
-occasion:req.body.occasion
-
 };
 
 clothes.push(newItem);
@@ -140,8 +134,7 @@ item.category = req.body.category;
 item.color = req.body.color;
 item.style = req.body.style;
 item.brand = req.body.brand;
-item.brand = req.body.season;
-item.occasion = req.body.occasion;
+item.season = req.body.season;
 
 res.redirect('/closet');
 
@@ -178,8 +171,56 @@ clothes.filter(
 x => x.favorite
 );
 
+let outfitSuggestions = clothes;
+
+if(req.query.category){
+
+outfitSuggestions =
+outfitSuggestions.filter(
+x => x.category === req.query.category
+);
+
+}
+
+if(req.query.style){
+
+outfitSuggestions =
+outfitSuggestions.filter(
+x => x.style === req.query.style
+);
+
+}
+
+if(req.query.color){
+
+outfitSuggestions =
+outfitSuggestions.filter(
+x => x.color === req.query.color
+);
+
+}
+
+if(req.query.season){
+
+outfitSuggestions =
+outfitSuggestions.filter(
+x => x.season === req.query.season
+);
+
+}
+
+if(req.query.occasion){
+
+outfitSuggestions =
+outfitSuggestions.filter(
+x => x.occasion === req.query.occasion
+);
+
+}
+
 res.render('outfits',{
-favorites
+favorites,
+outfitSuggestions
 });
 
 });

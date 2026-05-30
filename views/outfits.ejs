@@ -1,3 +1,4 @@
+```ejs
 <!DOCTYPE html>
 <html>
 
@@ -19,15 +20,19 @@ rel="stylesheet">
 
 <div class="container mt-4">
 
-<h1>My Favourite Outfits</h1>
+<div class="row">
+
+<div class="col-md-6">
+
+<h2>My Favourite Items</h2>
 
 <div class="row">
 
 <% favorites.forEach(item=>{ %>
 
-<div class="col-md-4">
+<div class="col-md-6">
 
-<div class="card mb-4">
+<div class="card mb-3">
 
 <img
 src="<%= item.imageUrl %>"
@@ -51,6 +56,107 @@ class="card-img-top"
 </div>
 
 <% }) %>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<h2>Generate Outfit</h2>
+
+<form action="/outfits" method="GET">
+
+<select
+name="category"
+class="form-select mb-2"
+>
+
+<option value="">
+All Categories
+</option>
+
+<option>Top</option>
+<option>Bottom</option>
+<option>Outerwear</option>
+<option>Shoes</option>
+
+</select>
+
+<select
+name="style"
+class="form-select mb-2"
+>
+
+<option value="">
+All Styles
+</option>
+
+<option>Casual</option>
+<option>Formal</option>
+<option>Streetwear</option>
+
+</select>
+
+<input
+type="text"
+name="color"
+placeholder="Color"
+class="form-control mb-2"
+>
+
+<input
+type="text"
+name="season"
+placeholder="Season"
+class="form-control mb-2"
+>
+
+<button
+type="submit"
+class="btn btn-dark"
+>
+
+Generate Outfit
+
+</button>
+
+</form>
+
+<h3 class="mt-4">
+Suggested Outfits
+</h3>
+
+<% outfitSuggestions.forEach(item=>{ %>
+
+<div class="card mb-3">
+
+<img
+src="<%= item.imageUrl %>"
+class="card-img-top"
+>
+
+<div class="card-body">
+
+<h5>
+<%= item.name %>
+</h5>
+
+<p>
+Style: <%= item.style %>
+</p>
+
+<p>
+Brand: <%= item.brand %>
+</p>
+
+</div>
+
+</div>
+
+<% }) %>
+
+</div>
 
 </div>
 
